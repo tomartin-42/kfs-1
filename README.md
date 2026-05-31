@@ -37,20 +37,20 @@ ENCENDIDO DEL PC
   │ 1. GRUB carga kernel.bin en la dirección física 1M      │
   │ 2. GRUB verifica la cabecera Multiboot                  │
   │ 3. GRUB pasa a modo protegido (32 bits, ring 0)         │
-  │ 4. GRUB salta a _start (entry point del linker)          │
+  │ 4. GRUB salta a _start (entry point del linker)         │
   └─────────────────────────────────────────────────────────┘
        │
        ▼
   ┌─────────────────────────────────────────────────────────┐
-  │                boot.asm  (_start)                        │
+  │                boot.asm  (_start)                       │
   │                                                         │
-  │  1. Configura el stack pointer (ESP = stack_top)         │
+  │  1. Configura el stack pointer (ESP = stack_top)        │
   │  2. Llama a kmain()                                     │
   └─────────────────────────────────────────────────────────┘
        │
        ▼
   ┌─────────────────────────────────────────────────────────┐
-  │                kernel.c  (kmain)                         │
+  │                kernel.c  (kmain)                        │
   │                                                         │
   │  1. Limpia la pantalla VGA (clear_screen)               │
   │  2. Escribe "42" en la esquina superior izquierda       │
