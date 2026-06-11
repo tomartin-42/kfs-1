@@ -55,7 +55,9 @@ CFLAGS = -m32 \
          -ffreestanding \
          -fno-stack-protector \
          -nostdlib \
-         -nodefaultlibs
+         -nodefaultlibs \
+	 -fno-builtin \
+	 -fno-exceptions
 
 # ── Desglose de cada flag ────────────────────────────────────────────────────
 #
