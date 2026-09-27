@@ -69,7 +69,7 @@ clean:
 	rm -rf *.o $(ISO_DIR)
 
 fclean: clean
-	rm -f kernel.bin $(ISO)
+	rm -f kernel.bin 
 
 re: fclean all
 
