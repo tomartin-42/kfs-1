@@ -39,8 +39,8 @@ check: kernel.bin
 # --locales, --fonts, --themes: omite recursos gráficos y traducciones innecesarios.
 # --compress=xz: comprime los componentes de GRUB para mantener la ISO bajo 10 MB.
 # -o: indica el nombre del archivo ISO de salida; ISO_DIR es su árbol de entrada.
-$(ISO): kernel.bin grub.cfg Makefile
-	rm -rf $(ISO_DIR)
+$(ISO): fclean kernel.bin grub.cfg Makefile 
+	rm -rf $(ISO_DIR) $(ISO)
 	mkdir -p $(ISO_DIR)/boot/grub
 	cp kernel.bin $(ISO_DIR)/boot/kernel.bin
 	cp grub.cfg $(ISO_DIR)/boot/grub/grub.cfg
