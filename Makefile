@@ -39,7 +39,7 @@ check: kernel.bin
 # --locales, --fonts, --themes: omite recursos gráficos y traducciones innecesarios.
 # --compress=xz: comprime los componentes de GRUB para mantener la ISO bajo 10 MB.
 # -o: indica el nombre del archivo ISO de salida; ISO_DIR es su árbol de entrada.
-$(ISO): fclean kernel.bin grub.cfg Makefile 
+$(ISO): kernel.bin grub.cfg Makefile
 	rm -rf $(ISO_DIR) $(ISO)
 	mkdir -p $(ISO_DIR)/boot/grub
 	cp kernel.bin $(ISO_DIR)/boot/kernel.bin
@@ -62,14 +62,15 @@ iso: $(ISO)
 run: kernel.bin
 	qemu-system-i386 -kernel kernel.bin
 
-run-iso: $(ISO)
+run-iso:
+	@test -f $(ISO) || { echo "Error: $(ISO) no existe. Ejecuta 'make iso'."; exit 1; }
 	qemu-system-i386 -cdrom $(ISO)
 
 clean:
 	rm -rf *.o $(ISO_DIR)
 
 fclean: clean
-	rm -f kernel.bin 
+	rm -f kernel.bin
 
 re: fclean all
 
