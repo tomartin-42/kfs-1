@@ -2,7 +2,7 @@
 ; MULTIBOOT HEADER
 ; =========================
 
-section .multiboot        ; Sección especial donde colocamos el header multiboot
+section .multiboot       ; Sección especial donde colocamos el header multiboot
                          ; GRUB buscará esta sección para saber si el kernel es válido
 
 align 4                  ; Alinea los datos a 4 bytes (requisito del estándar multiboot)
@@ -51,9 +51,6 @@ _start:
                         ; Sin esto, call/ret romperían el programa
 
     call kmain          ; Llamamos a la función principal en C
-                        ; Internamente:
-                        ; - guarda dirección de retorno en el stack
-                        ; - salta a kmain
 
 
 ; =========================
